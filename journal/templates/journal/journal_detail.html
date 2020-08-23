@@ -1,10 +1,8 @@
 {% extends "projects/base.html" %}
 {% block content %}
 <div class="col-md-8 offset-md-2">
-    <h1>Journal Entries</h1>
-    <hr>
-    {% for post in posts %}
-    <h2><a href="{% url 'journal:journal_detail' post.pk %}">{{ post.title }}</a></h2>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.body | linebreaks }}</p>
     <small>
         {{ post.created_on.date }} |&nbsp;
         Categories:&nbsp;
@@ -14,7 +12,6 @@
         </a>&nbsp;
         {% endfor %}
     </small>
-    <p>{{ post.body | slice:":400" }}...</p>
-    {% endfor %}
+
 </div>
 {% endblock %}
